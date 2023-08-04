@@ -3,6 +3,9 @@ package kr.vanilage.bedwars;
 import kr.vanilage.bedwars.blockevent.BreakEvent;
 import kr.vanilage.bedwars.blockevent.ClickBed;
 import kr.vanilage.bedwars.blockevent.MakeEvent;
+import kr.vanilage.bedwars.gameevent.BedBreakEvent;
+import kr.vanilage.bedwars.gameevent.KillEvent;
+import kr.vanilage.bedwars.gameevent.LeaveEvent;
 import kr.vanilage.bedwars.itempatch.Fireball;
 import kr.vanilage.bedwars.itempatch.Tnt;
 import kr.vanilage.bedwars.shop.ItemStackGenerator;
@@ -48,8 +51,12 @@ public final class Bedwars extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ClickBed(), this);
         Bukkit.getPluginManager().registerEvents(new OpenInventory(), this);
         Bukkit.getPluginManager().registerEvents(new UsingShop(), this);
+        Bukkit.getPluginManager().registerEvents(new BedBreakEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new KillEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new LeaveEvent(), this);
 
         Bukkit.getPluginCommand("mapset").setExecutor(new MapSet());
+        Bukkit.getPluginCommand("start").setExecutor(new Start());
 
         // 철
         Bukkit.getScheduler().runTaskTimer(this, new Runnable() {

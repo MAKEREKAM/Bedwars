@@ -14,11 +14,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 public class BedBreakEvent implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
-        if (!Bedwars.gaming) {
-            e.setCancelled(true);
-        }
-
         if (e.getBlock().getType().equals(Material.RED_BED)) {
+            if (!Bedwars.gaming) {
+                e.setCancelled(true);
+            }
             e.setDropItems(false);
             Location location = e.getBlock().getLocation();
             for (Location i : Locations.BedRed) {

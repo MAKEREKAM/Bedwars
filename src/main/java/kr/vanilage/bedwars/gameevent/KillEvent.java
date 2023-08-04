@@ -18,18 +18,22 @@ public class KillEvent implements Listener {
 
         if (Bedwars.gaming) {
             if (!Bedwars.bedStatus.get(Bedwars.teamUUID.get(e.getPlayer().getUniqueId()))) {
-                Bukkit.broadcastMessage(String.format(Messages.TEAM_ELIMINATED, Bedwars.teamUUID.get(e.getPlayer()).name()));
-                Bedwars.teamStatus.remove(Bedwars.teamUUID.get(e.getPlayer()));
-                Bedwars.teamStatus.put(Bedwars.teamUUID.get(e.getPlayer()), false);
+                Bukkit.broadcastMessage(String.format(Messages.TEAM_ELIMINATED, Bedwars.teamUUID.get(e.getPlayer().getUniqueId()).name()));
+                Bedwars.teamStatus.remove(Bedwars.teamUUID.get(e.getPlayer().getUniqueId()));
+                Bedwars.teamStatus.put(Bedwars.teamUUID.get(e.getPlayer().getUniqueId()), false);
+
+                int num = 0;
 
                 for (Teams i : Bedwars.teamStatus.keySet()) {
                     if (Bedwars.teamStatus.get(i)) {
-                        return;
+                        num++;
                     }
                 }
 
-                Bedwars.gaming = false;
-                Bukkit.broadcastMessage(Messages.GAME_ENDED);
+                if (num == 1 ) {
+                    Bedwars.gaming = false;
+                    Bukkit.broadcastMessage(Messages.GAME_ENDED);
+                }
             }
         }
     }
