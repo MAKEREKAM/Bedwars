@@ -1,8 +1,6 @@
 package kr.vanilage.bedwars;
 
-import kr.vanilage.bedwars.blockevent.BreakEvent;
-import kr.vanilage.bedwars.blockevent.ClickBed;
-import kr.vanilage.bedwars.blockevent.MakeEvent;
+import kr.vanilage.bedwars.blockevent.*;
 import kr.vanilage.bedwars.gameevent.BedBreakEvent;
 import kr.vanilage.bedwars.gameevent.KillEvent;
 import kr.vanilage.bedwars.gameevent.LeaveEvent;
@@ -54,6 +52,8 @@ public final class Bedwars extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new BedBreakEvent(), this);
         Bukkit.getPluginManager().registerEvents(new KillEvent(), this);
         Bukkit.getPluginManager().registerEvents(new LeaveEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new Dura(), this);
+        Bukkit.getPluginManager().registerEvents(new Hungry(), this);
 
         Bukkit.getPluginCommand("mapset").setExecutor(new MapSet());
         Bukkit.getPluginCommand("start").setExecutor(new Start());
